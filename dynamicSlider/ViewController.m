@@ -52,6 +52,8 @@
         Slider.initialValue = 50.f;
         Slider.sliderNameHidden = i>3? YES:NO;
         Slider.moduleName = sliderNameAry[i];
+        Slider.sliderBG = MooMyColor(@"#222327");
+        Slider.roundBG = MooMyColor(@"#1EB2AE");
         [self.view addSubview:Slider];
         
     }

@@ -41,6 +41,12 @@
 /** 滑块名字 是否显示 yes : 显示  no : 不显示 */
 @property (nonatomic, assign) BOOL sliderNameHidden;
 
+/** 滑条背景色 */
+@property (nonatomic, strong) UIColor *sliderBG;
+
+/** 滑动块颜色 */
+@property (nonatomic, strong) UIColor *roundBG;
+
 /** 代理 */
 @property (nonatomic, weak) id<DataSliderDelegate> delegate;
 

@@ -37,7 +37,7 @@
     UILabel  *maxLabel;
     UILabel  *nameLabel;
     UILabel  *dataLabel;
-    UIImageView *numberView;
+    UIView *numberView;
     BOOL moveState;
 }
 
@@ -138,8 +138,11 @@
     maxLabel.textAlignment = NSTextAlignmentRight;
     [self addSubview:maxLabel];
     
-    numberView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Pl_Pre_Control"]];
+    numberView = [[UIView alloc] init];
     numberView.frame =CGRectMake(50, 1, MooDataSliderHeight-2, MooDataSliderHeight-2);
+    numberView.backgroundColor = MooMyColor(@"#1EB2AE");
+    numberView.layer.cornerRadius = numberView.height/2;
+    numberView.layer.masksToBounds = YES;
     numberView.userInteractionEnabled = NO;
     [self addSubview:numberView];
     
@@ -195,6 +198,22 @@
         minLabel.hidden = NO;
         nameLabel.hidden = YES;
     }
+}
+- (void)setSliderBG:(UIColor *)sliderBG
+{
+    _sliderBG = sliderBG;
+    
+    UIImage *stetchLeftTrack = [self OriginImage:[self createImageWithColor:sliderBG] scaleToSize:CGSizeMake(12, MooDataSliderH)];
+    UIImage *stetchRightTrack = [self OriginImage:[self createImageWithColor:sliderBG] scaleToSize:CGSizeMake(12, MooDataSliderH)];
+    
+    [slider setMinimumTrackImage:stetchLeftTrack forState:UIControlStateNormal];
+    [slider setMaximumTrackImage:stetchRightTrack forState:UIControlStateNormal];
+    
+}
+- (void)setRoundBG:(UIColor *)roundBG
+{
+    _roundBG = roundBG;
+    numberView.backgroundColor = roundBG;
 }
 
 -(UIImage*) OriginImage:(UIImage*)image scaleToSize:(CGSize)size
